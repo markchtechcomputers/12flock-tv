@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>12 Flock TV</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins&display=swap');
+
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      background-color: black;
+      font-family: 'Arial', sans-serif;
+      overflow-x: hidden;
+      color: white;
+      position: relative;
+    }
+    #binary-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      opacity: 0.15;
+      background: black;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2em 1.5em;
+    }
+    header h1:first-child {
+      color: limegreen;
+      font-weight: bold;
+      margin-bottom: 0.2em;
+      font-size: 3.2em;
+      font-family: 'Orbitron', monospace;
+    }
+    header h1:last-child {
+      color: white;
+      font-weight: bold;
+      margin-top: 0;
+      font-size: 2.5em;
+    }
+    h2 {
+      color: limegreen;
+      font-weight: bold;
+      margin-top: 0;
+      margin-bottom: 0.8em;
+      font-size: 1.8em;
+      font-family: 'Orbitron', monospace;
+    }
+    nav {
+      margin-bottom: 2em;
+    }
+    nav a {
+      margin: 0 15px;
+      color: limegreen;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-family: 'Poppins', sans-serif;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      margin-bottom: 3em;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5em;
+    }
+    .card {
+      background: rgba(0, 100, 0, 0.2);
+      border: 2px solid limegreen;
+      border-radius: 10px;
+      padding: 1.2em 1.5em;
+      flex: 1 1 280px;
+      box-sizing: border-box;
+      cursor: default;
+      color: white;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      opacity: 0.95;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease forwards;
+      font-family: 'Poppins', sans-serif;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,255,0,0.6);
+      opacity: 1;
+    }
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.4em;
+      color: limegreen;
+      font-weight: bold;
+      font-size: 1.3em;
+      font-family: 'Orbitron', monospace;
+    }
+    .card p {
+      margin: 0.2em 0;
+      line-height: 1.4;
+    }
+    .price {
+      font-weight: bold;
+      margin-top: 0.6em;
+      color: #a0ff60;
+    }
+    #contact h2 {
+      margin-bottom: 1em;
+    }
+    #contact .contact-box {
+      background: rgba(0, 100, 0, 0.25);
+      border: 2px solid limegreen;
+      border-radius: 12px;
+      padding: 1em 1.5em;
+      margin-bottom: 1em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.15em;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    #contact .contact-box:hover {
+      background: rgba(0, 150, 0, 0.4);
+    }
+    #contact .contact-icon {
+      width: 24px;
+      height: 24px;
+      fill: limegreen;
+      flex-shrink: 0;
+    }
+    #contact a.whatsapp-link {
+      color: limegreen;
+      font-weight: bold;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    #contact a.whatsapp-link:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 2em;
+      padding-bottom: 3em;
+      font-family: 'Poppins', sans-serif;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="binary-canvas"></canvas>
+
+  <div class="content">
+    <header>
+      <h1>12 FLOCK TV</h1>
+      <h1>Digital Solutions For Modern Business</h1>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#live-events">Live Events</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>12 Flock TV is a creative media platform focused on events, street culture, and real urban stories. We cover, document, and promote real-life talent and unforgettable moments.</p>
+    </section>
+
+     <section id="projects">
+                        <h2>Projects</h2>
+      <div class="card-container">
+        <div class="card" style="animation-delay: 0.1s;">
+          <h3>Flock Fest 2024:2025 – Music and Culture Showcase</h3>
+          <p>An annual festival celebrating music, arts, and urban culture featuring local and international artists.</p>
+          <p class="price">Price: KES 1500</p>
+        </div>
+        <div class="card" style="animation-delay: 0.3s;">
+          <h3>📽️ StreetTalk – Youth Documentary Series</h3>
+          <p>A documentary series highlighting the stories, challenges, and dreams of young people in urban areas.</p>
+          <p class="price">Price: Free Access</p>
+        </div>
+        <div class="card" style="animation-delay: 0.5s;">
+          <h3>🎬 Interviews with Rising Artists</h3>
+          <p>Exclusive interviews showcasing upcoming talents and their journeys in the creative industry.</p>
+          <p class="price">Price: Free Access</p>
+        </div>
+        <div class="card" style="animation-delay: 0.7s;">
+          <h3>📅 Event Services – Weddings, Live Coverage & More</h3>
+          <p>Professional coverage for weddings, live events, corporate gatherings, and special occasions.</p>
+          <p class="price">Price: KES 18,000</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="live-events">
+      <h2>Live Events</h2>
+      <div class="card-container">
+        <div class="card" style="animation-delay: 0.2s;">
+          <h3>🎤 Flock Fest 2025 – Annual Music & Culture Festival</h3>
+          <p>Join us for a high-energy live event with performances from top artists, street food, and culture.</p>
+          <p class="price">Price: KES 1800</p>
+        </div>
+        <div class="card" style="animation-delay: 0.4s;">
+          <h3>🎧 Night Vibes – DJ Live Sets and Street Party</h3>
+          <p>Experience the city nightlife with live DJ sets, lights, and the ultimate street party vibe.</p>
+          <p class="price">Price: KES 800</p>
+        </div>
+        <div class="card" style="animation-delay: 0.6s;">
+          <h3>🎬 Urban Stories Live – Real Stories from the Streets</h3>
+          <p>A live storytelling event bringing urban tales and street culture to life on stage.</p>
+          <p class="price">Price: KES 500</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-box">
+        <svg class="contact-icon" viewBox="0 0 24 24">
+          <path d="M21.707 20.293l-4.387-4.387a.998.998 0 0 0-1.414 0l-2.547 2.547a16.868 16.868 0 0 1-7.646-7.646l2.547-2.547a.998.998 0 0 0 0-1.414L3.707 2.293A1 1 0 0 0 2.293 3.707c-.813 2.62-.152 5.834 2.187 8.173 3.852 3.852 7.75 4.027 9.685 3.109a1 1 0 0 0 .67-.912 1 1 0 0 0-.128-.873z"/>
+        </svg>
+        <span>Email: 12flocktv@gmail.com</span>
+      </div>
+      <div class="contact-box">
+        <svg class="contact-icon" viewBox="0 0 24 24">
+          <path d="M7.09 14.745c-2.052-.832-3.043-2.536-3.043-4.752 0-2.786 2.305-5.088 6.208-5.088 1.385 0 2.544.39 3.225 1.062l-1.332 1.431c-.555-.54-1.373-.815-2.072-.815-1.782 0-2.96 1.17-2.96 2.74 0 1.334.983 2.345 2.705 2.345 1.28 0 2.127-.452 2.67-1.104v-1.194h-2.162v-1.148h3.376v3.456c0 2.644-1.735 3.737-4.229 3.737-1.55 0-3.036-.594-4.04-1.638l1.34-1.374z"/>
+        </svg>
+        <span>Instagram: @12flocktv</span>
+      </div>
+      <div class="contact-box">
+        <svg class="contact-icon" viewBox="0 0 24 24">
+          <path d="M6.62 10.79a15.093 15.093 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.21 11.364 11.364 0 0 0 3.58.57 1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1C10.3 20.79 3.21 13.7 3.21 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.26.2 2.48.57 3.58a1 1 0 0 1-.21 1.11l-2.2 2.2z"/>
+        </svg>
+        <span>Phone: +254 712 345678</span>
+      </div>
+      <div class="contact-box">
+        <a href="https://wa.me/254712345678" target="_blank" class="whatsapp-link">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="#25D366">
+            <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.372 0 0 5.372 0 12c0 2.117.56 4.093 1.536 5.828L0 24l6.357-1.528A11.92 11.92 0 0 0 12 24c6.628 0 12-5.372 12-12a11.94 11.94 0 0 0-3.48-8.52zm-8.52 16.528a8.363 8.363 0 0 1-4.405-1.285l-.314-.187-3.756.9.927-3.664-.204-.31a8.338 8.338 0 0 1 1.28-11.17 8.48 8.48 0 0 1 11.74 1.042 8.369 8.369 0 0 1-7.97 13.174zm4.088-6.388c-.211-.105-1.248-.62-1.442-.692-.193-.07-.334-.105-.475.105-.142.211-.546.692-.67.833-.123.142-.247.16-.458.053-.211-.105-.89-.328-1.7-1.04-.63-.56-1.054-1.252-1.177-1.463-.123-.211-.013-.325.092-.43.095-.094.211-.246.316-.369.105-.124.14-.211.211-.35.07-.142.035-.266-.017-.371-.052-.105-.474-1.14-.65-1.56-.172-.41-.346-.354-.475-.36l-.405-.007c-.14 0-.37.052-.563.246-.193.211-.74.722-.74 1.757 0 1.034.758 2.036.864 2.18.105.142 1.49 2.27 3.607 3.182.504.218.896.348 1.204.446.505.162.965.14 1.329.085.405-.062 1.248-.51 1.424-1.002.176-.49.176-.91.123-1.002-.053-.092-.193-.142-.404-.247z"/>
+          </svg>
+          Chat with us on WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2025 12 Flock TV. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    // Binary rain effect on canvas
+    const canvas = document.getElementById('binary-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    const fontSize = 16;
+    let columns;
+
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      columns = Math.floor(width / fontSize);
+      drops = new Array(columns).fill(1);
+    }
+
+    let drops;
+
+    function draw() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.fillStyle = '#0f0';
+      ctx.font = fontSize + 'px monospace';
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = Math.random() > 0.5 ? '0' : '1';
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    window.addEventListener('resize', () => {
+      resize();
+    });
+
+    resize();
+    setInterval(draw, 50);
+  </script>
+</body>
+</html>
